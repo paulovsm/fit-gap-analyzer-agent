@@ -1,0 +1,53 @@
+analyze_requirements:
+  description: >
+    Analise os requisitos de negócio do arquivo localizado em {requirements_file_path} no contexto
+    do módulo SAP {sap_module}.
+    
+    Contexto da análise de processos: {process_analysis_context}
+    
+    **Passos de Análise:**
+    1. Use a ferramenta RequirementsFileProcessorTool para processar o arquivo
+    2. Use a ferramenta RequirementsDataAnalyzerTool para análise detalhada
+    3. Para cada requisito identificado, avalie:
+       - Clareza e completude da especificação
+       - Cobertura pelas funcionalidades SAP standard
+       - Necessidade de configurações específicas
+       - Necessidade de customizações
+       - Complexidade de implementação
+       - Impacto no negócio
+    
+    **Informações do Arquivo:**
+    - Caminho: {requirements_file_path}
+    - Nome original: {requirements_filename}
+    - Tamanho: {requirements_file_size} bytes
+  expected_output: >
+    Análise estruturada em JSON contendo:
+    - Lista de requisitos identificados com IDs únicos
+    - Para cada requisito: descrição, categoria (funcional/não-funcional),
+      prioridade, cobertura SAP (%), gap identificado (sim/não),
+      esforço estimado, impacto no negócio
+    - Mapeamento para funcionalidades SAP específicas
+    - Identificação de dependências entre requisitos
+    - Estatísticas do arquivo processado
+    - Qualidade dos dados dos requisitos
+
+validate_functional_fit:
+  description: >
+    Valide a aderência funcional entre os requisitos analisados e as capacidades
+    do módulo SAP {sap_module}.
+    
+    Analise cada requisito e determine:
+    1. Funcionalidades SAP que podem atender o requisito
+    2. Configurações necessárias
+    3. Customizações requeridas (se houver)
+    4. Soluções alternativas ou workarounds
+    5. Recomendações de implementação
+    
+    Contexto da análise anterior disponível.
+  expected_output: >
+    Relatório de aderência funcional em JSON:
+    - Para cada requisito: status de cobertura (total/parcial/não coberto)
+    - Soluções SAP recomendadas (standard/configuração/customização)
+    - Estimativa de esforço de implementação
+    - Riscos técnicos identificados
+    - Recomendações de abordagem de implementação

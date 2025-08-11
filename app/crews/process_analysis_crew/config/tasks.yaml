@@ -1,0 +1,43 @@
+analyze_processes:
+  description: >
+    Analise detalhadamente os processos de negócio descritos na apresentação com ID {presentation_id}.
+    
+    Foque nos seguintes aspectos:
+    1. Identificação clara de cada processo descrito
+    2. Mapeamento para funcionalidades SAP do módulo {sap_module}
+    3. Avaliação de complexidade de implementação
+    4. Identificação de pontos críticos e dependências
+    5. Avaliação do potencial de automação
+    
+    Contexto adicional: {additional_context}
+    
+    Use as ferramentas disponíveis para recuperar o conteúdo da apresentação
+    e realizar uma análise técnica detalhada.
+  expected_output: >
+    Relatório estruturado em JSON contendo:
+    - Lista de processos identificados
+    - Para cada processo: nome, descrição, complexidade (1-10), adequação ao SAP (%), 
+      potencial de automação (%), impacto no negócio (LOW/MEDIUM/HIGH)
+    - Recomendações técnicas de implementação
+    - Identificação de riscos e dependências
+
+validate_business_logic:
+  description: >
+    Com base na análise técnica realizada, valide a lógica de negócio dos processos
+    identificados e identifique oportunidades de otimização.
+    
+    Analise:
+    1. Consistência da lógica de negócio
+    2. Oportunidades de simplificação de processos
+    3. Potencial de padronização
+    4. Identificação de gargalos operacionais
+    5. Sugestões de melhorias de eficiência
+    
+    Contexto da análise técnica anterior disponível no contexto.
+  expected_output: >
+    Relatório de validação em JSON contendo:
+    - Validação da lógica de cada processo (válido/inválido com justificativa)
+    - Oportunidades de otimização identificadas
+    - Recomendações de melhorias de processo
+    - Avaliação de impacto no negócio das mudanças sugeridas
+    - Priorização das melhorias (alta/média/baixa)

@@ -1,0 +1,171 @@
+# Configuração das tarefas SAP
+analyze_business_processes:
+  description: >
+    Analise detalhadamente a apresentação SAP identificada pelo ID: {presentation_id}.
+    
+    Sua tarefa é:
+    1. Localizar o slide com texto "Business Process Overview" ou "How are the process designed in BOLD?"
+    2. Analisar cada slide subsequente que contenha processos de negócio
+    3. Para cada slide, extrair e detalhar:
+       - Número da página/slide
+       - Nome e descrição do processo
+       - Fluxo lógico do processo (converter elementos visuais em texto estruturado)
+       - Passos principais do processo
+       - Regras de negócio identificadas
+       - Pontos de integração com outros sistemas/módulos
+       - Controles e validações
+    
+    Apresente a análise de forma estruturada, mencionando sempre o número da página 
+    e explicando os processos como um especialista SAP {sap_module}.
+    
+    Foque especialmente em processos relacionados ao módulo {sap_module} e 
+    identifique qualquer processo que possa ter impacto na análise de requisitos.
+  expected_output: >
+    Relatório estruturado contendo:
+    - Lista detalhada de todos os processos encontrados
+    - Análise página por página com numeração
+    - Descrição clara de cada fluxo de processo
+    - Identificação de pontos críticos e integrações
+    - Resumo executivo dos processos core identificados
+  agent: business_process_analyst
+
+analyze_business_requirements:
+  description: >
+    Analise todos os requisitos de negócio do arquivo {requirements_file_id}.
+    
+    Para cada requisito listado na coluna "Description":
+    1. Extraia o ID do requisito (coluna "Key")
+    2. Analise a descrição completa do requisito
+    3. Compare com os processos core identificados na análise anterior
+    4. Determine se o processo core atende ao requisito ou se há gap
+    5. Classifique a prioridade e complexidade do requisito
+    6. Identifique dependências e pré-requisitos
+    
+    Para cada requisito, forneça:
+    - ID e descrição do requisito
+    - Análise de aderência aos processos core (com referência às páginas)
+    - Classificação de gap (SIM/NÃO) com justificativa técnica
+    - Impacto estimado no negócio
+    - Recomendações de implementação
+    
+    Não pule nenhum requisito da lista e mantenha a numeração original.
+  expected_output: >
+    Análise completa de todos os requisitos contendo:
+    - Lista numerada de todos os requisitos analisados
+    - Status de gap para cada requisito com justificativa
+    - Mapeamento para processos core com referências de página
+    - Classificação de prioridade e impacto
+    - Recomendações específicas por requisito
+  agent: requirements_analyst
+  context:
+    - analyze_business_processes
+
+perform_gap_analysis:
+  description: >
+    Realize uma análise detalhada de gaps baseada nas análises anteriores de 
+    processos e requisitos.
+    
+    Para cada requisito identificado como GAP:
+    1. Analise a diferença específica entre o processo core e o requisito
+    2. Classifique o tipo de gap (configuração, customização, desenvolvimento)
+    3. Avalie o impacto técnico e de negócio
+    4. Estime a complexidade de resolução
+    5. Identifique riscos e dependências
+    6. Sugira alternativas ou workarounds quando aplicável
+    
+    Para requisitos SEM gap:
+    1. Confirme a aderência completa ao processo core
+    2. Identifique pontos de validação necessários
+    3. Sugira testes de aceitação
+    
+    Classifique todos os gaps por:
+    - Impacto no negócio (Muito Alto, Alto, Médio, Baixo, Muito Baixo)
+    - Complexidade técnica (Alta, Média, Baixa)
+    - Urgência de resolução (Crítica, Alta, Média, Baixa)
+  expected_output: >
+    Relatório consolidado de gaps contendo:
+    - Lista priorizada de todos os gaps identificados
+    - Classificação detalhada por impacto e complexidade
+    - Análise de causa raiz para cada gap
+    - Recomendações de resolução com estimativas de esforço
+    - Roadmap sugerido para implementação
+    - Análise de riscos e dependências
+  agent: gap_analysis_specialist
+  context:
+    - analyze_business_processes
+    - analyze_business_requirements
+
+analyze_meeting_transcript:
+  description: >
+    Analise a transcrição da reunião {meeting_transcript_id} para extrair 
+    informações relevantes que suportem ou contradigam a análise de requisitos.
+    
+    Procure por:
+    1. Discussões sobre cada requisito identificado na análise anterior
+    2. Decisões tomadas durante a reunião
+    3. Action items relacionados aos requisitos
+    4. Validações ou questionamentos levantados
+    5. Compromissos assumidos pelos stakeholders
+    6. Mudanças de escopo ou prioridade mencionadas
+    
+    Para cada requisito da análise anterior, verifique:
+    - Se foi discutido na reunião (SIM/NÃO)
+    - Qual foi o contexto da discussão
+    - Se houve validação ou questionamento
+    - Se foram identificadas dependências adicionais
+    - Referências específicas com timestamps quando possível
+    
+    Correlacione as informações da transcrição com a análise de requisitos 
+    para confirmar ou ajustar as conclusões anteriores.
+  expected_output: >
+    Relatório de correlação contendo:
+    - Mapeamento de cada requisito com discussões na reunião
+    - Lista de decisões relevantes tomadas
+    - Action items identificados
+    - Validações ou questionamentos por requisito
+    - Recomendações de ajuste na análise baseadas na reunião
+    - Resumo das principais conclusões da reunião
+  agent: meeting_transcript_analyzer
+  context:
+    - analyze_business_processes
+    - analyze_business_requirements
+    - perform_gap_analysis
+
+generate_final_report:
+  description: >
+    Consolide todas as análises anteriores em um relatório executivo abrangente 
+    e acionável seguindo ESTRITAMENTE o formato especificado.
+    
+    O relatório deve seguir exatamente esta estrutura para cada requisito:
+    
+    1. Requirement ID "Key" do arquivo de requisitos
+    2. Análise do processo core com número da página
+    3. Explicação do processo core
+    4. Se GAP: SIM ou NÃO
+    5. Razão do GAP e justificativa (se aplicável)
+    6. Referência cruzada da transcrição com número da página
+    7. Conclusão final e impacto no negócio (Muito Baixo, Baixo, Médio, Alto, Muito Alto)
+    
+    Inclua também:
+    - Resumo executivo com estatísticas gerais
+    - Lista de recomendações prioritárias
+    - Roadmap de implementação sugerido
+    - Análise de riscos e mitigações
+    - Próximos passos recomendados
+    
+    O relatório deve ser claro, objetivo e fornecer valor imediato para 
+    tomadores de decisão.
+  expected_output: >
+    Relatório final estruturado contendo:
+    - Resumo executivo com métricas chave
+    - Análise detalhada por requisito no formato especificado
+    - Conclusões e recomendações estratégicas
+    - Roadmap de implementação priorizado
+    - Análise de impacto e benefícios esperados
+    - Próximos passos específicos e acionáveis
+  agent: final_report_agent
+  context:
+    - analyze_business_processes
+    - analyze_business_requirements
+    - perform_gap_analysis
+    - analyze_meeting_transcript

@@ -1,0 +1,52 @@
+identify_gaps:
+  description: >
+    Realize uma análise sistemática de gaps comparando:
+    
+    1. Processos identificados na análise: {process_analysis_context}
+    2. Requisitos de negócio analisados: {requirements_analysis_context}  
+    3. Capacidades do módulo SAP {sap_module}
+    
+    Para cada gap identificado, determine:
+    - Descrição clara do gap
+    - Categoria (funcional/técnico/processo/dados)
+    - Criticidade (crítica/alta/média/baixa)
+    - Impacto no negócio se não resolvido
+    - Complexidade estimada de solução
+    - Dependências com outros gaps ou sistemas
+    
+    Use as ferramentas SAP disponíveis para validar capacidades standard.
+  expected_output: >
+    Relatório estruturado em JSON contendo:
+    - Lista de gaps identificados com IDs únicos
+    - Para cada gap: descrição, categoria, criticidade, impacto no negócio,
+      complexidade de solução (1-10), esforço estimado, dependências
+    - Mapeamento de gaps para processos e requisitos afetados
+    - Classificação por ordem de prioridade de resolução
+
+prioritize_solutions:
+  description: >
+    Com base nos gaps identificados, desenvolva um plano priorizado de soluções
+    considerando:
+    
+    1. Criticidade do gap para o negócio
+    2. Complexidade e esforço de implementação
+    3. Dependências técnicas e funcionais
+    4. Orçamento típico de projetos SAP
+    5. Melhores práticas de implementação
+    
+    Para cada solução proposta, defina:
+    - Abordagem recomendada (standard/configuração/customização/integração)
+    - Esforço estimado em dias/pessoa
+    - Riscos e mitigações
+    - Pré-requisitos técnicos
+    - Ordem de implementação sugerida
+    
+    Contexto dos gaps identificados disponível.
+  expected_output: >
+    Plano de soluções priorizado em JSON:
+    - Para cada gap: solução recomendada, justificativa da abordagem
+    - Matriz de priorização (impacto vs esforço)
+    - Cronograma sugerido de implementação (fases)
+    - Estimativas de esforço e custo por fase
+    - Riscos identificados e planos de mitigação
+    - Recomendações de melhores práticas

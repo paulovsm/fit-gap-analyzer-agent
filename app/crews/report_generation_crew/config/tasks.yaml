@@ -1,0 +1,67 @@
+generate_report:
+  description: >
+    Consolide todas as análises realizadas em um relatório executivo abrangente:
+    
+    **Análises Disponíveis:**
+    - Análise de Processos: {process_analysis}
+    - Análise de Requisitos: {requirements_analysis}  
+    - Análise de Gaps: {gap_analysis}
+    - Insights de Reuniões: {meeting_analysis}
+    
+    **Dados do Projeto:**
+    - ID da Análise: {analysis_id}
+    - Módulo SAP: {sap_module}
+    - Tipo de Análise: {analysis_type}
+    
+    **Estrutura do Relatório:**
+    1. Sumário Executivo
+    2. Análise de Processos de Negócio
+    3. Avaliação de Requisitos
+    4. Identificação e Priorização de Gaps
+    5. Insights de Stakeholders (se disponível)
+    6. Recomendações Estratégicas
+    7. Plano de Implementação Sugerido
+    8. Análise de Riscos e Mitigações
+    9. Próximos Passos
+    
+    O relatório deve ser claro, objetivo e orientado à tomada de decisões.
+  expected_output: >
+    Relatório executivo estruturado em formato JSON contendo:
+    - sumario_executivo: resumo de 3-4 parágrafos dos principais achados
+    - analise_processos: resumo da análise de processos com métricas
+    - analise_requisitos: resumo da cobertura de requisitos
+    - gaps_identificados: lista priorizada dos principais gaps
+    - recomendacoes: lista de recomendações estratégicas priorizadas
+    - cronograma_sugerido: fases de implementação com estimativas
+    - riscos_principais: principais riscos identificados
+    - proximos_passos: ações imediatas recomendadas
+    - metricas_chave: KPIs e números importantes do projeto
+
+review_report:
+  description: >
+    Revise o relatório gerado verificando:
+    
+    1. **Consistência:** Informações consistentes entre seções
+    2. **Completude:** Todas as análises foram adequadamente representadas
+    3. **Clareza:** Linguagem clara e acessível para executivos
+    4. **Precisão:** Dados e recomendações baseados nas análises
+    5. **Acionabilidade:** Recomendações específicas e implementáveis
+    6. **Estrutura:** Fluxo lógico e organização adequada
+    
+    **Critérios de Qualidade:**
+    - Sumário executivo impactante e conciso
+    - Recomendações priorizadas por impacto/esforço
+    - Cronograma realista e detalhado
+    - Riscos claramente identificados com mitigações
+    - Próximos passos específicos e datados
+    
+    Contexto do relatório inicial disponível.
+  expected_output: >
+    Relatório final revisado e melhorado em JSON:
+    - Todas as seções do relatório original otimizadas
+    - Inconsistências corrigidas
+    - Linguagem refinada para clareza executiva
+    - Recomendações mais específicas e acionáveis
+    - Métricas de qualidade: score_completude, score_clareza, score_consistencia
+    - Lista de melhorias implementadas na revisão
+    - Validação de que todos os requisitos foram atendidos

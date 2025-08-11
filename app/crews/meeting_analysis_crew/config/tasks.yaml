@@ -1,0 +1,46 @@
+analyze_meeting:
+  description: >
+    Analise a transcrição da reunião {meeting_transcript_id} extraindo:
+    
+    1. Requisitos mencionados mas não documentados formalmente
+    2. Preocupações e objeções levantadas pelos stakeholders
+    3. Decisões técnicas e de negócio tomadas
+    4. Expectativas e cronogramas mencionados
+    5. Riscos e impedimentos identificados nas discussões
+    6. Preferências tecnológicas ou restrições mencionadas
+    
+    Contexto dos requisitos já analisados: {requirements_context}
+    Contexto dos gaps identificados: {gap_context}
+    
+    Use as ferramentas disponíveis para recuperar a transcrição da reunião.
+  expected_output: >
+    Análise estruturada em JSON contendo:
+    - Requisitos adicionais identificados na discussão
+    - Decisões importantes tomadas durante a reunião
+    - Preocupações e objeções dos stakeholders
+    - Cronogramas e expectativas mencionados
+    - Riscos e impedimentos discutidos
+    - Preferências técnicas expressas
+    - Inconsistências com documentação formal
+
+extract_insights:
+  description: >
+    Consolide as informações extraídas da transcrição em insights acionáveis:
+    
+    1. Identifique gaps entre o que foi documentado e o que foi discutido
+    2. Avalie o sentimento geral dos stakeholders sobre o projeto
+    3. Identifique stakeholders chave e suas principais preocupações
+    4. Extraia critérios de sucesso implícitos mencionados
+    5. Identifique oportunidades não documentadas
+    6. Avalie riscos de mudança organizacional
+    
+    Contexto da análise da reunião disponível.
+  expected_output: >
+    Relatório de insights em JSON:
+    - Gaps entre documentação e discussões
+    - Análise de sentimento dos stakeholders (positivo/neutro/negativo)
+    - Mapa de stakeholders e suas preocupações principais
+    - Critérios de sucesso implícitos identificados
+    - Oportunidades de melhoria não documentadas
+    - Riscos organizacionais e de adoção identificados
+    - Recomendações para engajamento de stakeholders
